@@ -1,31 +1,617 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="CERA: Action-Preserving Efficient Communication for Cloud–Edge Vision-Language-Action Models."><title>CERA | Project Page</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230d2d45'/%3E%3Cpath d='M17 17h31v9H27v12h21v9H17z' fill='%2359c6b2'/%3E%3Ccircle cx='46' cy='43' r='5' fill='%23ff9563'/%3E%3C/svg%3E">
-  <style>
-    :root{--ink:#162b3b;--body:#334957;--muted:#6b7e89;--blue:#1479ad;--blue-soft:#eaf6fb;--mint:#34a991;--mint-soft:#eaf8f4;--orange:#ed8254;--line:#d9e6eb;--card:#f8fbfc;--max:980px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--body);font:400 16px/1.75 Inter,system-ui,sans-serif;background:linear-gradient(180deg,#f2fbff 0,#fff 460px)}a{color:inherit}.container{width:min(var(--max),calc(100% - 40px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,230,235,.85)}.nav{height:58px;display:flex;align-items:center;justify-content:space-between}.mark{font-weight:800;text-decoration:none;color:var(--ink);letter-spacing:-.03em}.mark span{color:var(--mint)}.navlinks{display:flex;gap:23px;font-size:.82rem;font-weight:600;color:var(--muted)}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--blue)}
-    header{text-align:center;padding:76px 0 54px}.venue{display:inline-block;padding:5px 13px;border-radius:999px;background:#dff3fa;color:#11698f;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}h1{font-family:Sora,Inter,sans-serif;font-size:clamp(2.15rem,5.3vw,3.7rem);font-weight:600;line-height:1.18;letter-spacing:-.045em;color:var(--ink);max-width:950px;margin:0 auto 24px}.authors{font-size:1rem;color:#506673;margin:0}.affiliation{font-size:.84rem;color:var(--muted);margin:4px 0 0}.links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:27px}.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 17px;border-radius:999px;text-decoration:none;font-size:.84rem;font-weight:700;background:var(--ink);color:#fff;box-shadow:0 7px 18px rgba(15,53,75,.12)}.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}.btn.disabled{color:#82929b;background:#f1f5f6;box-shadow:none;pointer-events:none}.icon{font-size:.95rem}
-    section{padding:55px 0}.section-label{text-align:center;color:var(--mint);text-transform:uppercase;font-size:.68rem;font-weight:700;letter-spacing:.15em;margin-bottom:9px}h2{font-family:Sora,Inter,sans-serif;text-align:center;font-size:clamp(1.65rem,3.6vw,2.25rem);font-weight:600;line-height:1.25;letter-spacing:-.035em;color:var(--ink);margin:0 0 30px}.paper-card{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.82);box-shadow:0 12px 40px rgba(23,83,112,.07);padding:32px}.abstract{max-width:820px;margin:auto;text-align:justify}.abstract strong{color:var(--blue)}
-    .figure{margin:0}.figure-frame{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:0 12px 32px rgba(28,77,102,.07)}.figure img{display:block;width:100%;height:auto}.figure figcaption{text-align:center;color:var(--muted);font-size:.8rem;line-height:1.55;margin-top:12px}.teaser{max-width:700px;margin:auto}.method-figure{overflow-x:auto}.method-figure img{min-width:760px}
-    .contribs{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.contrib{padding:24px;background:var(--card);border:1px solid var(--line);border-radius:15px}.num{width:33px;height:33px;border-radius:10px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font-size:.75rem;font-weight:800;margin-bottom:16px}.contrib h3{font-size:1rem;line-height:1.4;margin:0 0 8px;color:var(--ink)}.contrib p{font-size:.86rem;line-height:1.65;color:var(--muted);margin:0}
-    .method-text{max-width:840px;margin:26px auto 0}.method-text p{margin:20px 0 0}.tokens{display:flex;justify-content:center;align-items:center;gap:6px;margin:26px 0 8px}.token{width:30px;height:30px;border:2px solid var(--blue);background:var(--blue-soft);border-radius:5px}.token.ref{border-color:var(--orange);background:#fff0e9}.token.dim{opacity:.38}.token-gap{width:28px;text-align:center;color:var(--muted)}.token-note{text-align:center;font-size:.8rem;color:var(--muted)}
-    .results-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.chart,.stats{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px}.chart h3,.stats h3{font-size:.96rem;color:var(--ink);margin:0 0 23px}.bars{display:grid;gap:16px}.bar-row{display:grid;grid-template-columns:105px 1fr 62px;gap:10px;align-items:center;font-size:.76rem}.track{height:12px;background:#edf2f4;border-radius:999px;overflow:hidden}.fill{height:100%;background:#8da9b7;border-radius:999px}.fill.cera{background:linear-gradient(90deg,var(--mint),#68cfba)}.bar-row b{text-align:right;color:var(--ink);font-size:.74rem}.stat{padding:15px 0;border-bottom:1px solid var(--line)}.stat:first-of-type{padding-top:0}.stat:last-child{border:0;padding-bottom:0}.stat strong{display:block;font-size:1.8rem;letter-spacing:-.04em;color:var(--blue)}.stat span{font-size:.78rem;color:var(--muted)}
-    .table-wrap{margin-top:18px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}table{border-collapse:collapse;width:100%;min-width:650px;font-size:.79rem}th,td{padding:12px 14px;text-align:right;border-bottom:1px solid #e8eef1}th:first-child,td:first-child{text-align:left}th{background:#f4f9fa;color:#536b78;font-weight:700}tr:last-child td{border:0}.ours td{background:var(--mint-soft);color:#155f51;font-weight:700}.caption{font-size:.78rem;text-align:center;color:var(--muted);margin-top:10px}footer{margin-top:48px;border-top:1px solid var(--line);padding:40px 0;text-align:center;font-size:.8rem;color:var(--muted)}.back{text-decoration:none;color:var(--blue);font-weight:700}.reveal{opacity:0;transform:translateY(10px);transition:.55s ease}.reveal.show{opacity:1;transform:none}@media(max-width:760px){.navlinks{display:none}header{padding-top:56px}.paper-card{padding:22px}.contribs,.results-grid{grid-template-columns:1fr}.abstract{text-align:left}.bar-row{grid-template-columns:88px 1fr 57px}.method-figure img{min-width:680px}section{padding:42px 0}}
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="CERA: Action-Preserving Efficient Communication for Cloud–Edge Vision-Language-Action Models.">
+    <title>CERA | Project Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230d2d45'/%3E%3Cpath d='M17 17h31v9H27v12h21v9H17z' fill='%2359c6b2'/%3E%3Ccircle cx='46' cy='43' r='5' fill='%23ff9563'/%3E%3C/svg%3E">
+    
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <nav class="topbar"><div class="container nav"><a class="mark" href="#top">CERA<span>.</span></a><div class="navlinks"><a href="#abstract">Abstract</a><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a></div></div></nav>
-  <header id="top" class="container"><div class="venue">ICRA 2027 Submission</div><h1>CERA: Action-Preserving Efficient Communication for Cloud–Edge Vision-Language-Action Models</h1><p class="authors">Anonymous Authors</p><p class="affiliation">Anonymous Institution</p><div class="links"><a class="btn" href="#abstract"><span class="icon">▤</span> Paper</a><a class="btn secondary disabled" href="#"><span class="icon">⌘</span> Code · Coming soon</a></div></header>
-  <main>
-    <section id="abstract"><div class="container"><div class="section-label">Summary</div><h2>Abstract</h2><div class="paper-card abstract reveal">Vision–language–action models rely on large multimodal backbones that are difficult to deploy fully onboard resource-constrained robots. A cloud–edge split offers a practical alternative, but repeatedly transmitting high-dimensional intermediate representations creates a substantial communication burden. We introduce <strong>CERA</strong>, a Communication-Efficient Refinement Adapter that sends a compact base representation for every interface unit and selectively adds refinement according to predicted action-preservation benefit. Offline marginal action utilities calibrate refinement priorities, allowing one trained adapter to support multiple communication budgets without retraining.</div></div></section>
-    <section id="overview"><div class="container"><div class="section-label">Motivation</div><h2>Why CERA?</h2><figure class="figure teaser reveal"><div class="figure-frame"><img src="overview.png" alt="Comparison of VLA deployment options and token compression strategies"></div><figcaption>A cloud–edge split keeps the large VLM in the cloud and the action head on the robot. CERA plugs into this interface without modifying either pretrained component.</figcaption></figure></div></section>
-    <section><div class="container"><div class="section-label">Highlights</div><h2>Key Contributions</h2><div class="contribs reveal"><article class="contrib"><div class="num">01</div><h3>Plug-and-play split interface</h3><p>Compresses the cloud-to-robot conditioning representation while preserving the pretrained VLM, action head, and original input pathways.</p></article><article class="contrib"><div class="num">02</div><h3>Base–refinement representation</h3><p>Retains a compact base code for every unit and adds selective refinement under an adjustable budget M.</p></article><article class="contrib"><div class="num">03</div><h3>Action-calibrated allocation</h3><p>Uses offline marginal action utilities to prioritize the refinements that best preserve downstream actions.</p></article></div></div></section>
-    <section id="method"><div class="container"><div class="section-label">Approach</div><h2>CERA Framework</h2><figure class="figure method-figure reveal"><div class="figure-frame"><img src="method.png" alt="CERA cloud-edge inference and two-stage training framework"></div><figcaption>CERA inference and training. Stage 1 learns base-only and refined reconstruction. Stage 2 freezes the codec and trains a lightweight priority scorer from offline action utility.</figcaption></figure><div class="method-text reveal"><div class="tokens" aria-label="Base and refinement tokens"><span class="token"></span><span class="token"></span><span class="token"></span><span class="token"></span><span class="token-gap">+</span><span class="token ref"></span><span class="token ref"></span><span class="token ref dim"></span></div><div class="token-note">Base codes are always transmitted · refinement codes are budget-controlled</div><p>CERA reorganizes the VLM output into interface units and encodes each unit into a base code and a refinement code. At inference, the cloud computes an action-calibrated priority for every unit, transmits all base codes and up to <em>M</em> selected refinements, and the robot reconstructs the native representation before local action generation.</p></div></div></section>
-    <section id="results"><div class="container"><div class="section-label">Experiments</div><h2>Main Results</h2><div class="results-grid reveal"><div class="chart"><h3>GR00T N1.7 · mean success across LIBERO</h3><div class="bars"><div class="bar-row"><span>Raw</span><div class="track"><div class="fill" style="width:95.75%"></div></div><b>95.75%</b></div><div class="bar-row"><span>CERA</span><div class="track"><div class="fill cera" style="width:94%"></div></div><b>94.00%</b></div><div class="bar-row"><span>Token Pruning</span><div class="track"><div class="fill" style="width:93.5%"></div></div><b>93.50%</b></div><div class="bar-row"><span>Uniform AE</span><div class="track"><div class="fill" style="width:88.25%"></div></div><b>88.25%</b></div></div></div><aside class="stats"><h3>At a glance</h3><div class="stat"><strong>13.1×</strong><span>communication reduction on GR00T N1.7</span></div><div class="stat"><strong>11.1×</strong><span>communication reduction on π0.5</span></div><div class="stat"><strong>2.48 ms</strong><span>median CERA processing overhead</span></div></aside></div><div class="table-wrap reveal"><table><thead><tr><th>Allocation strategy</th><th>Budget M</th><th>Mean success ↑</th><th>Communication ↓</th></tr></thead><tbody><tr><td>Without refinement</td><td>0</td><td>78.00%</td><td>1.526 Mbps</td></tr><tr><td>Random allocation</td><td>32</td><td>85.00%</td><td>1.865 Mbps</td></tr><tr><td>Reconstruction-gain allocation</td><td>32</td><td>86.00%</td><td>1.855 Mbps</td></tr><tr class="ours"><td>CERA · action-calibrated</td><td>32</td><td>94.00%</td><td>1.854 Mbps</td></tr><tr><td>Full refinement</td><td>All</td><td>94.50%</td><td>3.052 Mbps</td></tr></tbody></table></div><p class="caption">Action calibration improves mean success by 8 percentage points at nearly identical communication cost.</p></div></section>
-  </main>
-  <footer><div class="container">CERA · Anonymous ICRA 2027 Submission<br><a class="back" href="#top">Back to top ↑</a></div></footer>
-  <script>const o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>o.observe(x));</script>
-</body></html>
+    <nav class="topbar">
+        <div class="container nav"><a class="mark" href="#top">CERA<span>.</span></a>
+            <div class="navlinks"><a href="#abstract">Abstract</a><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a></div>
+        </div>
+    </nav>
+    <header id="top" class="container">
+        <div class="venue">ICRA 2027 Submission</div>
+        <h1>CERA: Action-Preserving Efficient Communication for Cloud–Edge Vision-Language-Action Models</h1>
+        <p class="authors">Anonymous Authors</p>
+        <p class="affiliation">Anonymous Institution</p>
+        <div class="links">
+
+            <!-- Paper -->
+            <a class="btn secondary disabled" href="#">
+                <span class="icon">▤</span> Paper · TBD
+            </a>
+
+
+            <!-- Code -->
+            <a 
+                class="btn" 
+                href="https://github.com/your-repository-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span class="icon">⌘</span> Code
+            </a>
+
+        </div>
+    </header>
+    <main>
+        <section id="abstract">
+            <div class="container">
+                <div class="section-label">Summary</div>
+                <h2>Abstract</h2>
+                <div class="paper-card abstract reveal">
+                    Vision-language-action (VLA) models rely on large multimodal backbones whose computation and memory requirements can make fully onboard deployment difficult on resource-constrained robots. 
+                    Moving the entire policy to the cloud reduces this onboard burden, but also makes action generation dependent on remote inference and communication.
+                    A cloud-edge split therefore provides an attractive alternative: the computationally expensive vision-language model (VLM) is executed in the cloud, while the action head remains on the robot for local action generation. 
+                    However, this deployment requires repeated transmission of high-dimensional intermediate representations from the VLM to the action head, creating a substantial communication burden.
+                    We introduce <i><b>CERA</b>, a <b>C</b>ommunication-<b>E</b>fficient <b>R</b>efinement <b>A</b>dapter</i> that reduces this communication cost without modifying the pretrained VLA components. 
+                    CERA preserves a compact base representation across the VLM output and selectively refines semantic tokens according to their predicted contribution to preserving the original policy's actions.
+                    Refinement priorities are calibrated using offline marginal action utilities, enabling the same trained adapter to support different communication budgets without retraining. 
+                    We evaluate CERA on GR00T N1.7 and π<sub>0.5</sub> across four LIBERO suites and four RoboLab tasks. 
+                    CERA reduces communication by 10–13× while preserving near-original task success, and action-aware refinement allocation improves closed-loop success by 8 percentage points over reconstruction-based allocation at the same communication budget.
+                    </div>
+            </div>
+        </section>
+        <section id="overview">
+            <div class="container">
+                <div class="section-label">Motivation</div>
+                <h2>Why CERA?</h2>
+                <figure class="figure teaser reveal">
+                    <button 
+                        class="figure-frame figure-zoom" 
+                        type="button"
+                    >
+
+                    <img 
+                        src="figure/overview.svg"
+                        alt="Why CERA overview"
+                    >
+
+                    </button>
+                    <figcaption>A cloud–edge split keeps the large VLM in the cloud and the action head on the robot. CERA plugs into this interface without modifying either pretrained component.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="section-label">Highlights</div>
+                <h2>Key Contributions</h2>
+                <div class="contribs reveal">
+                    <article class="contrib">
+                        <div class="num">01</div>
+                        <h3>Plug-and-play split interface</h3>
+                        <p>Compresses the cloud-to-robot conditioning representation while preserving the pretrained VLM, action head, and original input pathways.</p>
+                    </article>
+                    <article class="contrib">
+                        <div class="num">02</div>
+                        <h3>Base–refinement representation</h3>
+                        <p>Retains a compact base code for every unit and adds selective refinement under an adjustable budget M.</p>
+                    </article>
+                    <article class="contrib">
+                        <div class="num">03</div>
+                        <h3>Action-calibrated allocation</h3>
+                        <p>Uses offline marginal action utilities to prioritize the refinements that best preserve downstream actions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="method">
+            <div class="container">
+                <div class="section-label">Approach</div>
+                <h2>CERA Framework</h2>
+                <figure class="figure method-figure reveal">
+                    <button class="figure-frame figure-zoom" type="button" aria-label="View CERA framework figure larger"><img src="figure/CERA_method_figure.svg" alt="CERA cloud-edge inference and two-stage training framework"></button>
+                    <figcaption>CERA inference and training. Stage 1 learns base-only and refined reconstruction. Stage 2 freezes the codec and trains a lightweight priority scorer from offline action utility.</figcaption>
+                </figure>
+                <div class="method-text reveal">
+                    <div class="tokens" aria-label="Base and refinement tokens"><span class="token"></span><span class="token"></span><span class="token"></span><span class="token"></span><span class="token-gap">+</span><span class="token ref"></span><span class="token ref"></span><span class="token ref dim"></span></div>
+                    <div class="token-note">Base codes are always transmitted · refinement codes are budget-controlled</div>
+                    <p>CERA reorganizes the VLM output into interface units and encodes each unit into a base code and a refinement code. At inference, the cloud computes an action-calibrated priority for every unit, transmits all base codes and up to <em>M</em> selected refinements, and the robot reconstructs the native representation before local action generation.</p>
+                </div>
+            </div>
+        </section>
+        <section id="results">
+            <div class="container">
+
+                <div class="section-label">
+                    Experiments
+                </div>
+
+                <h2>
+                    Main Results
+                </h2>
+
+
+                <!-- Trade-off Figure -->
+                <div class="result-card pareto-card reveal">
+                    <h3>
+                        Payload–Performance Trade-off
+                    </h3>
+
+                    <div class="pareto-layout">
+                        <div class="pareto-figure">
+
+                            <img
+                                src="figure/CERA_pareto.png"
+                                alt="Payload performance trade-off"
+                            >
+                        </div>
+                        <div class="pareto-description">
+                            <p>
+                                CERA achieves substantial communication reduction
+                                while maintaining task success close to the original
+                                full-resolution VLA model.
+                            </p>
+                            <ul>
+                                <li>
+                                    10–13× payload reduction
+                                </li>
+
+                                <li>
+                                    Near-original success preservation
+                                </li>
+
+                                <li>
+                                    Action-aware refinement allocation
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIBERO + RoboLab -->
+                <div class="result-two-column reveal">
+
+
+                    <!-- LIBERO -->
+                    <div class="result-card">
+
+                        <h3>
+                            LIBERO Experiments
+                        </h3>
+
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Method
+                                        </th>
+
+                                        <th>
+                                            Payload ↓
+                                        </th>
+
+                                        <th>
+                                            Reduction ↑
+                                        </th>
+
+                                        <th>
+                                            Success ↑
+                                        </th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            Raw
+                                        </td>
+
+                                        <td>
+                                            1.217 MB
+                                        </td>
+
+                                        <td>
+                                            1.0×
+                                        </td>
+
+                                        <td>
+                                            95.75%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Quantization (INT8)
+                                        </td>
+
+                                        <td>
+                                            0.305 MB
+                                        </td>
+
+                                        <td>
+                                            4.0×
+                                        </td>
+
+                                        <td>
+                                            94.25%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Token Pruning
+                                        </td>
+
+                                        <td>
+                                            0.217 MB
+                                        </td>
+
+                                        <td>
+                                            5.6×
+                                        </td>
+
+                                        <td>
+                                            93.50%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Uniform AE
+                                        </td>
+
+                                        <td>
+                                            0.093 MB
+                                        </td>
+
+                                        <td>
+                                            13.1×
+                                        </td>
+
+                                        <td>
+                                            88.25%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="ours">
+
+                                        <td>
+                                            CERA (Ours)
+                                        </td>
+
+                                        <td>
+                                            0.093 MB
+                                        </td>
+
+                                        <td>
+                                            13.1×
+                                        </td>
+
+                                        <td>
+                                            94.00%
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <!-- RoboLab -->
+                    <div class="result-card">
+
+                        <h3>
+                            RoboLab Experiments
+                        </h3>
+
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+                                        <th>
+                                            Method
+                                        </th>
+
+                                        <th>
+                                            Payload ↓
+                                        </th>
+
+                                        <th>
+                                            Reduction ↑
+                                        </th>
+
+                                        <th>
+                                            Success ↑
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+
+                                    <tr>
+                                        <td>
+                                            Raw
+                                        </td>
+
+                                        <td>
+                                            2.859 MB
+                                        </td>
+
+                                        <td>
+                                            1.0×
+                                        </td>
+
+                                        <td>
+                                            83.75%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Quantization (INT8)
+                                        </td>
+
+                                        <td>
+                                            0.933 MB
+                                        </td>
+
+                                        <td>
+                                            3.06×
+                                        </td>
+
+                                        <td>
+                                            80.50%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Token Pruning
+                                        </td>
+
+                                        <td>
+                                            0.550 MB
+                                        </td>
+
+                                        <td>
+                                            5.20×
+                                        </td>
+
+                                        <td>
+                                            72.75%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            Uniform AE
+                                        </td>
+
+                                        <td>
+                                            0.275 MB
+                                        </td>
+
+                                        <td>
+                                            10.38×
+                                        </td>
+
+                                        <td>
+                                            61.00%
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="ours">
+
+                                        <td>
+                                            CERA (Ours)
+                                        </td>
+
+                                        <td>
+                                            0.276 MB
+                                        </td>
+
+                                        <td>
+                                            10.38×
+                                        </td>
+
+                                        <td>
+                                            80.50%
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <!-- CERA Overhead -->
+                <div class="result-card reveal">
+
+                    <h3>
+                        CERA Processing Overhead
+                    </h3>
+
+
+                    <div class="overhead-layout">
+
+
+                        <!-- Left : Latency Figure -->
+                        <div class="overhead-figure">
+
+                            <img
+                                class="result-image"
+                                src="figure/CERA_e2e.png"
+                                alt="End-to-end latency breakdown"
+                            >
+
+                        </div>
+
+                        <!-- Right : Latency Table -->
+                        <div class="overhead-table">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Location
+                                            </th>
+
+                                            <th>
+                                                Component
+                                            </th>
+
+                                            <th>
+                                                Latency (ms)
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="3">
+                                                Cloud
+                                            </td>
+
+                                            <td>
+                                                VLM
+                                            </td>
+
+                                            <td>
+                                                64.8 (3.72%)
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                CERA Encoder
+                                            </td>
+
+                                            <td>
+                                                0.5 (0.03%)
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                CERA Scorer
+                                            </td>
+
+                                            <td>
+                                                2.0 (0.11%)
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                Network
+                                            </td>
+
+                                            <td>
+                                                Communication
+                                            </td>
+
+                                            <td>
+                                                526.7 (30.24%)
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td rowspan="2">
+                                                Edge
+                                            </td>
+
+                                            <td>
+                                                CERA Decoder
+                                            </td>
+
+                                            <td>
+                                                2.6 (0.15%)
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                Action Head
+                                            </td>
+
+                                            <td>
+                                                1144.9 (65.74%)
+                                            </td>
+                                        </tr>
+
+                                        <tr class="ours">
+                                            <td colspan="2">
+                                                Total E2E
+                                            </td>
+
+                                            <td>
+                                                1741.5
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged CERA framework figure">
+        <button class="lightbox-close" type="button" aria-label="Close enlarged figure">&times;</button>
+        <img src="figure/CERA_method_figure.svg" alt="Enlarged CERA cloud-edge inference and two-stage training framework">
+    </div>
+    <footer>
+        <div class="container">CERA · Anonymous ICRA 2027 Submission<br><a class="back" href="#top">Back to top ↑</a></div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
